@@ -33,10 +33,11 @@ function Register() {
     }
     setLoading(true);
     try {
-      await api.post("http://localhost:5000/api/auth/register", formData);
+      await api.post("/auth/register", formData);
       alert("Registration Successful! Please log in.");
       navigate("/login");
     } catch (err) {
+      console.error("Registration error details:", err);
       alert(err.response?.data?.message || err.message || "Registration Failed");
     } finally {
       setLoading(false);
